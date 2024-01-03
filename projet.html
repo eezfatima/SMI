@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Site SMI</title>
+  <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color:  #001a33;
+    background: linear-gradient(to right , #001a33, #00001a
+
+);
+
+
+  }
+
+  .navbar {
+    overflow: hidden;
+    background-color:  #00001a
+; /* Set your desired background color */
+    text-align: center; /* Center the navbar */
+    opacity :30% ;
+    background: linear-gradient(to right , #001a33, #00001a)
+
+  }
+
+  .navbar a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background: linear-gradient(to right, #008fb3, #001a33);
+
+  }
+
+
+  .introduction {
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order of elements */
+      }
+
+  .introduction-image {
+    width: 40%;
+    height: auto;
+    margin-left: 20px;
+  }
+
+  .introduction-text {
+
+    width: 50%;   
+    margin-right:100PX;
+    margin-top: 100px;   
+
+  }
+  
+  .action-button {
+    background: linear-gradient(to right, #008fb3, #001a33);
+    display: inline-block;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+.action-button:hover {
+background: linear-gradient(to right, #001a33, #008fb3);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+color: #ecf0f1;
+}
+  p{
+    font-style:italic ;
+    color:#ddd;
+  }
+  h1{
+    font-style: italic;
+    color:#00a3cc ;
+  }
+
+  .button-options {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .button-options button {
+background: linear-gradient(to right, #008fb3, #001a33);
+color: white;
+padding: 12px 20px;
+margin: 8px;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+transition: background 0.3s ease;
+}
+
+.button-options button:hover {
+background: linear-gradient(to right, #001a33, #008fb3);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+color: #ecf0f1;
+}
+.module-options button{
+background: linear-gradient(to right, #008fb3, #001a33);
+color: white;
+padding: 12px 20px;
+margin: 8px;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+transition: background 0.3s ease;
+}
+.module-options {
+display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.module-options button:hover{
+background: linear-gradient(to right, #001a33, #008fb3);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+color: #ecf0f1;
+}
+
+/* Add initial styling to h1 titles */
+h1 {
+  font-size: 30px;
+  color: #00a3cc;
+  margin-bottom: 20px;
+  text-decoration: none; /* Remove default underline */
+  position: relative;
+  display: inline-block;
+}
+/* Add initial styling to h1 titles */
+h1 {
+  font-size: 30px;
+  color: #00a3cc;
+  margin-bottom: 20px;
+  text-decoration: none; /* Remove default underline */
+  position: relative;
+  display: inline-block;
+}
+
+/* Add an underline animation when entering the page */
+h1::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00a3cc;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: visibility 0s, transform 0.5s ease-out;
+}
+
+h1:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+#additionalButtonsContainer {
+      display: none; /* Hide the additional buttons initially */
+    }
+.additional-buttons-container button{
+  background: linear-gradient(to right, rgb(41, 31, 31) , rgb(108, 163, 235));
+}
+.additional-buttons-container button:hover{
+  background: linear-gradient(to left, rgb(41, 31, 31), black);
+}
+ 
+</style>
+
+</head>
+<body>
+  <div class="navbar">
+    <a href="#" onclick="showAccueilPage()">Accueil</a>
+    <a href="#" onclick="showAboutPage()">About</a>
+    <a href="#" onclick="showContactPage()">Contact</a>
+  </div>
+  <div  class="introduction">
+    <img src="pic4.jpg" alt="SMI Image" class="introduction-image">
+    <div class="introduction-text">
+      <h1>Bienvenue sur notre site SMI!</h1>
+      <p>Ici, vous trouverez tout ce dont vous avez besoin sur le SMI. <BR>Explorez nos cours, exercices, examens, et plus encore.</p>
+        <a href="javascript:void(0)" class="action-button" onclick="toggleButtons()">Voir les Cours et Examens</a>
+    </div>
+  <div class="button-options" id="buttonOptions">
+    <h1> Les modules :</h1>
+    <p>Ici, vous trouverez toutes les informations dont vous avez besoin sur votre module.  </p>
+    <button onclick="toggleModuleOptions('AlgorithmII')">Algorithm II</button>
+    <button onclick="toggleModuleOptions('ProgrammationC')">programmation C </button>
+    <button onclick="toggleModuleOptions('SystemeExploitation')">Systeme d'exploitation</button> 
+    <button onclick="toggleModuleOptions('statistiquesetprobabilites')">statistiques et probabilites </button>
+    <button onclick="toggleModuleOptions('ElectroniqueNumerique')">Electronique Numerique</button>
+<button onclick="toggleModuleOptions('Technologieduweb')">Technologie du web</button>
+  </div>
+<div class="module-options" id="AlgorithmIIOptions" style="display: none">
+   <button id="coursButton" onclick="toggleAdditionalButtons('additionalButtonsContainer')">Cours</button>
+    <div id="additionalButtonsContainer" class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap1algorithmique.pdf')">CHAPITRE 1</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap2.pdf')">CHAPITRE 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap3.pdf')">CHAPITRE 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap4.pdf')">CHAPITRE 4</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap5.pdf')">CHAPITRE 5</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap6.pdf')">CHAPITRE 6</button>
+    </div>
+    <button id="tdButton"  onclick="toggleAdditionalButtons('additionalButtonsContainer2')" >TD</button>
+      <div  id="additionalButtonsContainer2" class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\TD1ALGO.pdf')">TD1</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\TD2ALGO.pdf')">TD2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\TD3ALGO.pdf')">TD3</button>
+  </div>
+  </div>
+  <div class="module-options" id="ProgrammationCOptions" style="display: none;">
+    <button  id="coursButton2" onclick="toggleAdditionalButtons('additionalButtonsContainer3')">Cours</button>
+    <div  id="additionalButtonsContainer3"  class="additional-buttons-container" >
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap1C.pdf')">CHAPITRE 1</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap2C.pdf')">CHAPITRE 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap1C.pdf')">CHAPITRE 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap4C.pdf')">CHAPITRE 4</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap5C.pdf')">CHAPITRE 5</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap6C.pdf')">CHAPITRE 6</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap4C.pdf')">CHAPITRE 7</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap5C.pdf')">CHAPITRE 8</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\cours\\chap6C.pdf')">CHAPITRE 9</button>
+    </div>
+    <button  id="tdButton2"  onclick="toggleAdditionalButtons('additionalButtonsContainer4')">TD</button>
+    <div  id="additionalButtonsContainer4"   class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD2C.pdf')">TD 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD3C.pdf')">TD 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD4C.pdf')">TD 4</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD5C.pdf')">TD 5</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD6C.pdf')">TD 6</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD7C.pdf')">TD 7</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TD8C.pdf')">TD 8</button>
+  </div>
+    <button id="tpButton"  onclick="toggleAdditionalButtons('additionalButtonsContainer5')">TP</button>
+    <div  id="additionalButtonsContainer5" class="additional-buttons-container">
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TP1.pdf')">TP1</button>
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TP2C.pdf')">TP2</button>
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\C\\td\\TP3.pdf')">TP3</button>
+  </div>
+  </div>
+  
+  
+  <div class="module-options" id="SystemeExploitationOptions" style="display: none;">
+    <button id="coursButton3" onclick="toggleAdditionalButtons('additionalButtonsContainer6')">Cours</button>
+    <div id="additionalButtonsContainer6" class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\SE\\cours\\CHAP1.pdf')">TD 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\SE\\cours\\CHAP2.pdf')">TD 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\SE\\cours\\CHAP3.pdf')">TD 4</button>
+    </div>
+    <button id="tdButton3" onclick="toggleAdditionalButtons('additionalButtonsContainer7')">TD</button>
+    <div  id="additionalButtonsContainer7" class="additional-buttons-container">
+    <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD1.pdf')">TD1</button>
+    <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD2.pdf')"> TD1</button>
+    <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD3.pdf')">TD1</button>
+    </div>
+    <button  id="tpButton2"  onclick="toggleAdditionalButtons('additionalButtonsContainer8')">TP</button>
+    <div  id="additionalButtonsContainer8" class="additional-buttons-container">
+      <button>TP1</button>
+      <button>TP1</button>
+      <button>TP1</button> 
+  </div>
+  </div>
+
+  <div class="module-options" id="statistiquesetprobabilitesOptions" style="display: none;">
+    <button id="coursButton4"  onclick="toggleAdditionalButtons('additionalButtonsContainer9')" >Cours</button>
+   <div id="additionalButtonsContainer9"  class="additional-buttons-container">
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\cours\\CHAP1.pdf')">CHAPITRE 1</button>
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\cours\\CHAP2.pdf')">CHAPITRE 2</button>
+    <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\cours\\CHAP3.pdf')">CHAPITRE 3</button>
+  </div>
+  <button id="tdButton4"  onclick="toggleAdditionalButtons('additionalButtonsContainerr')" >TD</button>
+<div id="additionalButtonsContainerr"  class="additional-buttons-container">
+  <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD1.pdf')">TD1</button>
+  <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD2.pdf')"> TD2</button>
+  <button  onclick="loadPDF('C:\\Users\\USER\\Desktop\\S3\\probabilite et statistique\\tds\\TD3.pdf')">TD2</button>
+  </div>
+     </div>
+  </div>
+
+  <div class="module-options" id="ElectroniqueNumeriqueOptions" style="display: none;">
+    <button  id="coursButton5"  onclick="toggleAdditionalButtons('additionalButtonsContainerE')">Cours</button>
+    <div id="additionalButtonsContainerE" class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap1algorithmique.pdf')">CHAPITRE 1</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap2.pdf')">CHAPITRE 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap3.pdf')">CHAPITRE 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap4.pdf')">CHAPITRE 4</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap5.pdf')">CHAPITRE 5</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap6.pdf')">CHAPITRE 6</button></div>
+    <button  id="tdButton5"  onclick="toggleAdditionalButtons('additionalButtonsContainerET')">TD</button>
+    <div  id="additionalButtonsContainerET" class="additional-buttons-container">
+      <button>CHAPITRE 2</button>
+      <button>CHAPITRE 3</button>
+      <button>CHAPITRE 4</button></div>
+    <button  id="tpButton3"  onclick="toggleAdditionalButtons('additionalButtonsContainerEP')">TP</button>
+    <div id="additionalButtonsContainerEP" class="additional-buttons-container">
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 4</button></div>
+  </div>
+
+  <div class="module-options" id="TechnologieduwebOptions" style="display: none;">
+    <button  id="coursButton6"  onclick="toggleAdditionalButtons('additionalButtonsContainerT')">Cours</button>
+    <div id="additionalButtonsContainerT" class="additional-buttons-container">
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap1algorithmique.pdf')">CHAPITRE 1</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap2.pdf')">CHAPITRE 2</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap3.pdf')">CHAPITRE 3</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap4.pdf')">CHAPITRE 4</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap5.pdf')">CHAPITRE 5</button>
+      <button onclick="loadPDF('C:\\Users\\USER\\Desktop\\projet\\chap6.pdf')">CHAPITRE 6</button></div>
+    <button id="tdButton6"  onclick="toggleAdditionalButtons('additionalButtonsContainerTT')">TD</button>
+    <div id="additionalButtonsContainerTT" class="additional-buttons-container">
+      <button>CHAPITRE 3</button>
+      <button>CHAPITRE 4</button></div>
+    <button  id="tpButton4"  onclick="toggleAdditionalButtons('additionalButtonsContainerTP')">TP</button>
+    <div id="additionalButtonsContainerTP" class="additional-buttons-container">
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 3</button>
+    <button>CHAPITRE 3</button>
+      <button>CHAPITRE 4</button></div>
+  </div>
+
+
+  <script>
+     function toggleButtons() {
+    var buttonOptions = document.getElementById("buttonOptions");
+    var introductionText = document.querySelector('.introduction-text');
+    var introductionImage = document.querySelector('.introduction-image');
+    var additionalButtonsContainer = document.getElementById("additionalButtonsContainer");
+    var additionalButtonsContainer2 = document.getElementById('additionalButtonsContainer2');
+    var additionalButtonsContainer3 = document.getElementById('additionalButtonsContainer3');
+    var additionalButtonsContainer4 = document.getElementById('additionalButtonsContainer4');
+    var additionalButtonsContainer5 = document.getElementById('additionalButtonsContainer5');
+    var additionalButtonsContainer6 = document.getElementById('additionalButtonsContainer6');
+    var additionalButtonsContainer7 = document.getElementById('additionalButtonsContainer7');
+    var additionalButtonsContainer8 = document.getElementById('additionalButtonsContainer8');
+    var additionalButtonsContainer9 = document.getElementById('additionalButtonsContainer9');
+    var additionalButtonsContainerr = document.getElementById('additionalButtonsContainerr');
+    var additionalButtonsContainerE = document.getElementById('additionalButtonsContainerE');
+    var additionalButtonsContainerET = document.getElementById('additionalButtonsContainerET');
+    var additionalButtonsContainerEP = document.getElementById('additionalButtonsContainerEP');
+    var additionalButtonsContainerT = document.getElementById('additionalButtonsContainerT');
+    var additionalButtonsContainerTT = document.getElementById('additionalButtonsContainerTT');
+    var additionalButtonsContainerTP = document.getElementById('additionalButtonsContainerTP');
+    if (buttonOptions.style.display === "none" || buttonOptions.style.display === "") {
+      buttonOptions.style.display = "block";
+      introductionText.style.display = "none";
+      introductionImage.style.display = "none";
+      additionalButtonsContainer.style.display = "none";
+      additionalButtonsContainer2.style.display = "none";
+      additionalButtonsContainer3.style.display = "none";
+      additionalButtonsContainer4.style.display = "none";
+      additionalButtonsContainer5.style.display = "none";
+      additionalButtonsContainer6.style.display = "none";
+      additionalButtonsContainer7.style.display = "none";
+      additionalButtonsContainer8.style.display = "none";
+      additionalButtonsContainer9.style.display = "none";
+      additionalButtonsContainerr.style.display = "none";
+      additionalButtonsContainerE.style.display = "none";
+      additionalButtonsContainerET.style.display = "none";
+      additionalButtonsContainerEP.style.display = "none";
+      additionalButtonsContainerT.style.display = "none";
+      additionalButtonsContainerTT.style.display = "none";
+      additionalButtonsContainerTP.style.display = "none";
+    } else {
+      buttonOptions.style.display = "none";
+      introductionText.style.display = "block";
+      introductionImage.style.display = "block";
+      additionalButtonsContainer.style.display = "none";
+      additionalButtonsContainer2.style.display = "none";
+      additionalButtonsContainer3.style.display = "none";
+      additionalButtonsContainer4.style.display = "none";
+      additionalButtonsContainer5.style.display = "none";
+      additionalButtonsContainer6.style.display = "none";
+      additionalButtonsContainer7.style.display = "none";
+      additionalButtonsContainer8.style.display = "none";
+      additionalButtonsContainer9.style.display = "none";
+      additionalButtonsContainerr.style.display = "none";
+      additionalButtonsContainerE.style.display = "none";
+      additionalButtonsContainerET.style.display = "none";
+      additionalButtonsContainerEP.style.display = "none";
+      additionalButtonsContainerT.style.display = "none";
+      additionalButtonsContainerTT.style.display = "none";
+      additionalButtonsContainerTP.style.display = "none";
+
+
+    }
+  }
+
+
+  function toggleModuleOptions(module) {
+    var moduleOptions = document.getElementById(module + "Options");
+    var allModuleOptions = document.querySelectorAll('.module-options');
+    var introductionText = document.querySelector('.introduction-text');
+    var introductionImage = document.querySelector('.introduction-image');
+    var buttonOptions = document.getElementById("buttonOptions");
+    var additionalButtonsContainer = document.getElementById('additionalButtonsContainer'); // New line
+    var additionalButtonsContainer2 = document.getElementById('additionalButtonsContainer2');
+    var additionalButtonsContainer3 = document.getElementById('additionalButtonsContainer3');
+    var additionalButtonsContainer4 = document.getElementById('additionalButtonsContainer4');
+    var additionalButtonsContainer5 = document.getElementById('additionalButtonsContainer5');
+    var additionalButtonsContainer6 = document.getElementById('additionalButtonsContainer6');
+    var additionalButtonsContainer7 = document.getElementById('additionalButtonsContainer7');
+    var additionalButtonsContainer8 = document.getElementById('additionalButtonsContainer8');
+    var additionalButtonsContainer9 = document.getElementById('additionalButtonsContainer9');
+    var additionalButtonsContainerr = document.getElementById('additionalButtonsContainerr');
+    var additionalButtonsContainerE = document.getElementById('additionalButtonsContainerE');
+    var additionalButtonsContainerET = document.getElementById('additionalButtonsContainerET');
+    var additionalButtonsContainerEP = document.getElementById('additionalButtonsContainerEP');
+    var additionalButtonsContainerT = document.getElementById('additionalButtonsContainerT');
+    var additionalButtonsContainerTT = document.getElementById('additionalButtonsContainerTT');
+    var additionalButtonsContainerTP = document.getElementById('additionalButtonsContainerTP');
+    allModuleOptions.forEach(function (options) {
+      options.style.display = "none";
+    });
+
+    if (moduleOptions.style.display === "none" || moduleOptions.style.display === "") {
+      moduleOptions.style.display = "block";
+      introductionText.style.display = "none";
+      introductionImage.style.display = "none";
+      buttonOptions.style.display = "none";
+      additionalButtonsContainer.style.display = "none"; // New line
+      additionalButtonsContainer2.style.display = "none"; // New line
+      additionalButtonsContainer3.style.display = "none"; // New line
+      additionalButtonsContainer4.style.display = "none"; // New line
+      additionalButtonsContainer5.style.display = "none"; // New line
+      additionalButtonsContainer6.style.display = "none"; // New line
+      additionalButtonsContainer7.style.display = "none"; // New line
+      additionalButtonsContainer8.style.display = "none"; // New line
+      additionalButtonsContainer9.style.display = "none"; // New line
+      additionalButtonsContainerr.style.display = "none"; // New line
+      additionalButtonsContainerE.style.display = "none";
+      additionalButtonsContainerET.style.display = "none";
+      additionalButtonsContainerEP.style.display = "none";
+      additionalButtonsContainerT.style.display = "none";
+      additionalButtonsContainerTT.style.display = "none";
+      additionalButtonsContainerTP.style.display = "none";
+
+    } else {
+      moduleOptions.style.display = "none";
+      introductionText.style.display = "block";
+      introductionImage.style.display = "block";
+      buttonOptions.style.display = "block";
+      additionalButtonsContainer.style.display = "none"; // New line
+      additionalButtonsContainer2.style.display = "none"; // New line
+      additionalButtonsContainer3.style.display = "none"; // New line
+      additionalButtonsContainer4.style.display = "none"; // New line
+      additionalButtonsContainer5.style.display = "none"; // New line
+      additionalButtonsContainer6.style.display = "none"; // New line
+      additionalButtonsContainer7.style.display = "none"; // New line
+      additionalButtonsContainer8.style.display = "none"; // New line
+      additionalButtonsContainer9.style.display = "none"; // New line
+      additionalButtonsContainerr.style.display = "none"; // New line
+      additionalButtonsContainerE.style.display = "none";
+      additionalButtonsContainerET.style.display = "none";
+      additionalButtonsContainerEP.style.display = "none";
+      additionalButtonsContainerT.style.display = "none";
+      additionalButtonsContainerTT.style.display = "none";
+      additionalButtonsContainerTP.style.display = "none";
+
+
+    }
+  }
+  function toggleAdditionalButtons(containerId) {
+  var additionalButtonsContainer = document.getElementById('additionalButtonsContainer');
+  var additionalButtonsContainer2 = document.getElementById('additionalButtonsContainer2');
+  var additionalButtonsContainer3 = document.getElementById('additionalButtonsContainer3');
+  var additionalButtonsContainer4 = document.getElementById('additionalButtonsContainer4');
+  var additionalButtonsContainer5 = document.getElementById('additionalButtonsContainer5');
+  var additionalButtonsContainer6 = document.getElementById('additionalButtonsContainer6');
+  var additionalButtonsContainer7 = document.getElementById('additionalButtonsContainer7');
+  var additionalButtonsContainer8 = document.getElementById('additionalButtonsContainer8');
+  var additionalButtonsContainer9 = document.getElementById('additionalButtonsContainer9');
+  var additionalButtonsContainerr = document.getElementById('additionalButtonsContainerr');
+  var additionalButtonsContainerE = document.getElementById('additionalButtonsContainerE');
+  var additionalButtonsContainerET = document.getElementById('additionalButtonsContainerET');
+  var additionalButtonsContainerEP = document.getElementById('additionalButtonsContainerEP');
+  var additionalButtonsContainerT = document.getElementById('additionalButtonsContainerT');
+  var additionalButtonsContainerTT = document.getElementById('additionalButtonsContainerTT');
+  var additionalButtonsContainerTP = document.getElementById('additionalButtonsContainerTP');
+  var coursButton = document.getElementById('coursButton');
+  var tdButton = document.getElementById('tdButton');
+  var coursButton2 = document.getElementById('coursButton2');
+  var tdButton2 = document.getElementById('tdButton2');
+  var tpButton = document.getElementById('tpButton');
+  var coursButton3 = document.getElementById('coursButton3');
+  var tdButton3 = document.getElementById('tdButton3');
+  var tpButton2 = document.getElementById('tpButton2');
+  var coursButton4 = document.getElementById('coursButton4');
+  var tdButton4 = document.getElementById('tdButton4');
+  var coursButton5 = document.getElementById('coursButton5');
+  var tdButton5 = document.getElementById('tdButton5');
+  var tpButton3 = document.getElementById('tpButton3');
+  var coursButton6 = document.getElementById('coursButton6');
+  var tdButton6 = document.getElementById('tdButton6');
+  var tpButton4 = document.getElementById('tpButton4');
+  if (containerId === 'additionalButtonsContainer') {
+    additionalButtonsContainer.style.display = 'block';
+    additionalButtonsContainer2.style.display = 'none';
+    coursButton.style.display = 'none';
+    tdButton.style.display = 'none';
+  } else if (containerId === 'additionalButtonsContainer2') {
+    additionalButtonsContainer2.style.display = 'block';
+    additionalButtonsContainer.style.display = 'none';
+    coursButton.style.display = 'none';
+    tdButton.style.display = 'none';
+  }
+  if (containerId === 'additionalButtonsContainer3') {
+    additionalButtonsContainer3.style.display = 'block';
+    additionalButtonsContainer4.style.display = 'none';
+    additionalButtonsContainer5.style.display = 'none';
+    coursButton2.style.display = 'none';
+    tdButton2.style.display = 'none';
+    tpButton.style.display = 'none';
+
+  } else if (containerId === 'additionalButtonsContainer4') {
+    additionalButtonsContainer4.style.display = 'block';
+    additionalButtonsContainer5.style.display = 'none';
+    additionalButtonsContainer3.style.display = 'none';
+    coursButton2.style.display = 'none';
+    tdButton2.style.display = 'none';
+    tpButton.style.display = 'none';
+  }
+  else if (containerId === 'additionalButtonsContainer5') {
+    additionalButtonsContainer5.style.display = 'block';
+    additionalButtonsContainer4.style.display = 'none';
+    additionalButtonsContainer3.style.display = 'none';
+    coursButton2.style.display = 'none';
+    tdButton2.style.display = 'none';
+    tpButton.style.display = 'none';
+}
+
+
+if (containerId === 'additionalButtonsContainer6') {
+    additionalButtonsContainer6.style.display = 'block';
+    additionalButtonsContainer7.style.display = 'none';
+    additionalButtonsContainer8.style.display = 'none';
+    coursButton3.style.display = 'none';
+    tdButton3.style.display = 'none';
+    tpButton2.style.display = 'none';
+
+  } 
+  else if (containerId === 'additionalButtonsContainer7') {
+    additionalButtonsContainer7.style.display = 'block';
+    additionalButtonsContainer8.style.display = 'none';
+    additionalButtonsContainer6.style.display = 'none';
+    coursButton3.style.display = 'none';
+    tdButton3.style.display = 'none';
+    tpButton2.style.display = 'none';
+  }
+  else if (containerId === 'additionalButtonsContainer8') {
+    additionalButtonsContainer8.style.display = 'block';
+    additionalButtonsContainer7.style.display = 'none';
+    additionalButtonsContainer6.style.display = 'none';
+    coursButton3.style.display = 'none';
+    tdButton3.style.display = 'none';
+    tpButton2.style.display = 'none';
+  }
+ if (containerId === 'additionalButtonsContainer9') {
+    additionalButtonsContainer9.style.display = 'block';
+    additionalButtonsContainerr.style.display = 'none';
+    coursButton4.style.display = 'none';
+    tdButton4.style.display = 'none';
+  }
+  else if (containerId === 'additionalButtonsContainerr') {
+    additionalButtonsContainerr.style.display = 'block';
+    additionalButtonsContainer9.style.display = 'none';
+    coursButton4.style.display = 'none';
+    tdButton4.style.display = 'none';
+  }
+  if (containerId === 'additionalButtonsContainerE') {
+    additionalButtonsContainerE.style.display = 'block';
+    additionalButtonsContainerET.style.display = 'none';
+    additionalButtonsContainerEP.style.display = 'none';
+    coursButton5.style.display = 'none';
+    tdButton5.style.display = 'none';
+    tpButton3.style.display = 'none';
+
+  } 
+  else if (containerId === 'additionalButtonsContainerET') {
+    additionalButtonsContainerET.style.display = 'block';
+    additionalButtonsContainerEP.style.display = 'none';
+    additionalButtonsContainerE.style.display = 'none';
+    coursButton5.style.display = 'none';
+    tdButton5.style.display = 'none';
+    tpButton3.style.display = 'none';
+  }
+  else if (containerId === 'additionalButtonsContainerEP') {
+    additionalButtonsContainerEP.style.display = 'block';
+    additionalButtonsContainerET.style.display = 'none';
+    additionalButtonsContainerE.style.display = 'none';
+    coursButton5.style.display = 'none';
+    tdButton5.style.display = 'none';
+    tpButton3.style.display = 'none';
+  }
+  if (containerId === 'additionalButtonsContainerT') {
+    additionalButtonsContainerT.style.display = 'block';
+    additionalButtonsContainerTT.style.display = 'none';
+    additionalButtonsContainerTP.style.display = 'none';
+    coursButton6.style.display = 'none';
+    tdButton6.style.display = 'none';
+    tpButton4.style.display = 'none';
+
+  } 
+  else if (containerId === 'additionalButtonsContainerTT') {
+    additionalButtonsContainerTT.style.display = 'block';
+    additionalButtonsContainerTP.style.display = 'none';
+    additionalButtonsContainerT.style.display = 'none';
+    coursButton6.style.display = 'none';
+    tdButton6.style.display = 'none';
+    tpButton4.style.display = 'none';
+
+  }
+  else if (containerId === 'additionalButtonsContainerTP') {
+    additionalButtonsContainerTP.style.display = 'block';
+    additionalButtonsContainerTT.style.display = 'none';
+    additionalButtonsContainerT.style.display = 'none';
+    coursButton6.style.display = 'none';
+    tdButton6.style.display = 'none';
+    tpButton4.style.display = 'none';
+
+  }
+  }
+function additionalButtonClick(buttonId) {
+  console.log(buttonId + ' clicked');
+  var pdfPath = ''; 
+  window.open(pdfPath);
+}   
+function loadPDF(pdfPath){
+  window.open(pdfPath);
+}
+
+function showAccueilPage() {
+  hideAllPages();
+  document.getElementById('accueilPage').style.display = 'block';
+}
+
+function showAboutPage() {
+  hideAllPages();
+  document.getElementById('aboutPage').style.display = 'block';
+}
+
+function showContactPage() {
+  hideAllPages();
+  document.getElementById('contactPage').style.display = 'block';
+}
+
+function hideAllPages() {
+  document.getElementById('accueilPage').style.display = 'none';
+  document.getElementById('aboutPage').style.display = 'none';
+  document.getElementById('contactPage').style.display = 'none';
+}
+
+
+
+
+
+
+  </script>
+  
+</body>
+</html>
+
